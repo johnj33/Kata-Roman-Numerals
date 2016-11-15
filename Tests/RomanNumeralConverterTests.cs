@@ -18,12 +18,21 @@ namespace Tests
         [TestCase("II", 2)]
         [TestCase("III", 3)]
         [TestCase("IV", 4)]
-        [TestCase("V", 5)]
+        [TestCase("V", 5)]         
         public void ThenTheRomanNumeralIsConvertedToDecimalCorrectly(string romanNumeral, int expectedCalculatedValue)
         {
             var actualCalculatedValue = _romanNumeralConverter.ConvertRomanNumeralToDecimal(romanNumeral);
 
             Assert.That(actualCalculatedValue, Is.EqualTo(expectedCalculatedValue));
+        }
+
+        [TestCase("VV",false)]        
+        public void WhenTheRomanNumeralEnteredIsInvalid(string romanNumeral, bool isValid)
+        {
+            var actualValue = _romanNumeralConverter.CheckIfTheRomanNumeralIsValid(romanNumeral);
+            var expectedValue = isValid;
+
+            Assert.That(actualValue, Is.EqualTo(expectedValue));
         }
     }
 }
